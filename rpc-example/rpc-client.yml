@@ -13,7 +13,7 @@ channels:
     address: '{queue}'
     messages:
       receiveSumResult:
-        $ref: "./schemes/sumResult.yml"
+        $ref: "./messages/sumResult.yml"
     parameters:
       queue: {}
     bindings:
@@ -25,7 +25,7 @@ channels:
     address: rpc_queue
     messages:
       requestSum:
-        $ref: "./schemes/sum.yaml"
+        $ref: "./messages/sum.yaml"
     bindings:
       $ref: './bindings/rpc_queue.yaml'
 operations:
