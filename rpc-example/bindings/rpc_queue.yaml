@@ -1,0 +1,4 @@
+amqp:
+  is: queue
+  queue:
+    durable: false

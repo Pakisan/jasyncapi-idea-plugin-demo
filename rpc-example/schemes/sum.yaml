@@ -1,0 +1,22 @@
+{
+  "correlationId": {
+    "location": "$message.header#/correlation_id"
+  },
+  "payload": {
+    "type": "object",
+    "properties": {
+      "numbers": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "examples": [
+          [
+            4,
+            3
+          ]
+        ]
+      }
+    }
+  }
+}

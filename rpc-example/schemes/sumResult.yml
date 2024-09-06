@@ -1,0 +1,9 @@
+correlationId:
+  location: $message.header#/correlation_id
+payload:
+  type: object
+  properties:
+    result:
+      type: number
+      examples:
+        - 7

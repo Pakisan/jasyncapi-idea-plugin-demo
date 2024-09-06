@@ -1,0 +1,2 @@
+host: rabbitmq.example.org
+protocol: amqp

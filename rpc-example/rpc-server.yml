@@ -1,0 +1,46 @@
+asyncapi: 3.0.0
+id: 'urn:example:rpcserver'
+info:
+  title: RPC Server Example
+  version: 1.0.0
+  description: This example demonstrates how to define an RPC server.
+defaultContentType: application/json
+servers:
+  production:
+    $ref: './servers/rabbitmq.production.yaml'
+channels:
+  queue:
+    address: '{queue}'
+    messages:
+      sendSumResult:
+        $ref: "./schemes/sumResult.yml"
+    parameters:
+      queue: {}
+    bindings:
+      amqp:
+        is: queue
+        queue:
+          exclusive: true
+  rpc_queue:
+    address: rpc_queue
+    messages:
+      sum:
+        $ref: "./schemes/sum.yaml"
+    bindings:
+      $ref: './bindings/rpc_queue.yaml'
+operations:
+  sendSumResult:
+    action: send
+    channel:
+      $ref: '#/channels/queue'
+    bindings:
+      amqp:
+        ack: true
+    messages:
+      - $ref: '#/channels/queue/messages/sendSumResult'
+  sum:
+    action: receive
+    channel:
+      $ref: '#/channels/rpc_queue'
+    messages:
+      - $ref: '#/channels/rpc_queue/messages/sum'
