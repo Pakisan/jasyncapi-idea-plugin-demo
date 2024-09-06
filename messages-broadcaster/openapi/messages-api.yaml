@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Messages API
+  description: >-
+    Broadcasts received messages through an SSE connection to any subscribed
+    user
+servers:
+  - url: 'https://broadcast.local'
+paths:
+  /messages:
+    post:
+      summary: Broadcast message
+      operationId: broadcastMessage
+      description: Send message to broadcast to any subscribed user
+      tags:
+        - messages
+      requestBody:
+        description: Message to broadcast
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../schemes/messageToBroadcast.yaml'
+      responses:
+        '200':
+          description: message received
+    get:
+      deprecated: true
+      summary: Stream of messages
+      operationId: messagesStreamSubscribe
+      description: Receive all incoming messages
+      tags:
+        - messages
+      responses:
+        '200':
+          description: Stream of messages
+          headers:
+            X-SSE-Content-Type:
+              schema:
+                type: string
+                enum:
+                  - application/json
+            transfer-encoding:
+              schema:
+                type: string
+                enum:
+                  - chunked
+          content:
+            text/event-stream:
+              schema:
+                $ref: '/../schemes/messagesStream.yaml'

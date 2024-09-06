@@ -1,0 +1,4 @@
+type: array # it's stream of messages, so array is a good wrapper
+format: event-stream # SSE is about events, so it's event stream
+items:
+  $ref: './message.yml'

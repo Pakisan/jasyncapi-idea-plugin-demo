@@ -1,0 +1,53 @@
+asyncapi: 3.0.0
+info:
+  title: Messages stream API
+  description: >-
+    Broadcasts received messages through an SSE connection to any subscribed
+    user
+  version: 1.0.0
+servers:
+  dev:
+    host: 'broadcast.local'
+    protocol: https
+defaultContentType: application/json
+channels:
+  messages:
+    address: '/messages'
+    description: Listen for incoming messages
+    messages:
+      messageToBroadcast:
+        payload:
+          $ref: '../schemes/message.yml'
+        bindings:
+          http:
+            headers:
+              type: object
+              additionalProperties: false
+              required:
+                - Content-Type
+                - X-SSE-Content-Type
+                - transfer-encoding
+              properties:
+                Content-Type:
+                  type: string
+                  enum:
+                    - text/event-stream
+                X-SSE-Content-Type:
+                  type: string
+                  enum:
+                    - application/json
+                transfer-encoding:
+                  type: string
+                  enum:
+                    - chunked
+            statusCode: 200
+            bindingVersion: 0.3.0
+operations:
+  receiveMessages:
+    action: receive
+    channel:
+      $ref: '#/channels/messages'
+    bindings:
+      http:
+        method: GET
+        bindingVersion: 0.3.0
