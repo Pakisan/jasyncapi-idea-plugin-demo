@@ -1,0 +1,10 @@
+type: object
+properties:
+  command:
+    type: string
+    enum:
+      - 'on'
+      - 'off'
+    description: Whether to turn on or off the light.
+  sentAt:
+    $ref: './sentAt.yaml'

@@ -1,0 +1,8 @@
+type: object
+properties:
+  lumens:
+    type: integer
+    minimum: 0
+    description: Light intensity measured in lumens.
+  sentAt:
+    $ref: './sentAt.yaml'

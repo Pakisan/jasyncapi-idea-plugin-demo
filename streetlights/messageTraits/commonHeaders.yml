@@ -1,0 +1,7 @@
+headers:
+  type: object
+  properties:
+    my-app-header:
+      type: integer
+      minimum: 0
+      maximum: 100

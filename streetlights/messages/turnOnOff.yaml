@@ -1,0 +1,7 @@
+name: turnOnOff
+title: Turn on/off
+summary: Command a particular streetlight to turn the lights on or off.
+traits:
+  - $ref: '../messageTraits/commonHeaders.yml'
+payload:
+  $ref: "../schemas/turnOnOffPayload.yaml"

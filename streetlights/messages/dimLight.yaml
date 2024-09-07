@@ -1,0 +1,7 @@
+name: dimLight
+title: Dim light
+summary: Command a particular streetlight to dim the lights.
+traits:
+  - $ref: '../messageTraits/commonHeaders.yml'
+payload:
+  $ref: "../schemas/dimLightPayload.yaml"
