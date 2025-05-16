@@ -33,7 +33,7 @@
       "userSignedUp": {
         "name": "123",
         "payload": {
-          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schemaFormat": "application/xml",
           "schema": {
             "$ref": "./user.xsd"
           }
