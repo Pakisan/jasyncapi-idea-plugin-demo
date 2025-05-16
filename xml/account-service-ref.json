@@ -1,0 +1,44 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Account Service",
+    "version": "1.0.0",
+    "description": "This service is in charge of processing user signups"
+  },
+  "channels": {
+    "userSignedUp": {
+      "address": "user/signedup",
+      "messages": {
+        "UserSignedUp": {
+          "$ref": "#/components/messages/userSignedUp"
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendUserSignedUp": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/userSignedUp"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/userSignedUp/messages/UserSignedUp"
+        }
+      ]
+    }
+  },
+  "components": {
+    "messages": {
+      "userSignedUp": {
+        "name": "123",
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "./user.xsd"
+          }
+        }
+      }
+    }
+  }
+}
